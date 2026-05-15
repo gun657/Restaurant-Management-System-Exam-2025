@@ -48,12 +48,12 @@ jobs:
       - name: Prepare test database
         run: cd backend && npx prisma db push
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rms_test
+          DATABASE_URL: postgresql://postgres:postgres@postgres:5432/rms_test
 
       - name: Run backend tests
         run: cd backend && npm test
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rms_test
+          DATABASE_URL: postgresql://postgres:postgres@postgres:5432/rms_test
 
       - name: Install Newman CLI
         run: npm install -g newman
@@ -61,7 +61,7 @@ jobs:
       - name: Run Newman API tests
         run: |
           cd backend
-          DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rms_test \
+          DATABASE_URL=postgresql://postgres:postgres@postgres:5432/rms_test \
           JWT_SECRET=supersecretjwtkey \
           PORT=3001 \
           npx tsx src/app.ts &
