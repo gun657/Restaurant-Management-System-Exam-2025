@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rms_test
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/rms_test
 
     services:
       postgres:
